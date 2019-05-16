@@ -1,5 +1,5 @@
 //
-//  ImageCollectionViewCell.h
+//  DecorationView.h
 //  InstaKilo
 //
 //  Created by Dayson Dong on 2019-05-15.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ImageCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
-@property (nonatomic) NSIndexPath *indexPath;
+@interface DecorationView : UICollectionReusableView
+
+@property (nonatomic, weak) IBOutlet UIImageView *background;
 
 @end
 

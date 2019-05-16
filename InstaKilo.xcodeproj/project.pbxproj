@@ -16,6 +16,7 @@
 		ED050DE3228C728A00A26D73 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED050DE2228C728A00A26D73 /* ImageCollectionViewCell.m */; };
 		ED050E0B228C918B00A26D73 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED050E0A228C918B00A26D73 /* HeaderView.m */; };
 		ED050E0E228CA36A00A26D73 /* CustomCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED050E0D228CA36A00A26D73 /* CustomCollectionViewFlowLayout.m */; };
+		EDB00365228CBFA800DDBA2D /* DecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB00364228CBFA800DDBA2D /* DecorationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		ED050E0A228C918B00A26D73 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		ED050E0C228CA36A00A26D73 /* CustomCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		ED050E0D228CA36A00A26D73 /* CustomCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		EDB00363228CBFA800DDBA2D /* DecorationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecorationView.h; sourceTree = "<group>"; };
+		EDB00364228CBFA800DDBA2D /* DecorationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecorationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +76,11 @@
 				ED050DCF228C6E9000A26D73 /* ViewController.m */,
 				ED050E0C228CA36A00A26D73 /* CustomCollectionViewFlowLayout.h */,
 				ED050E0D228CA36A00A26D73 /* CustomCollectionViewFlowLayout.m */,
+				EDB00363228CBFA800DDBA2D /* DecorationView.h */,
+				EDB00364228CBFA800DDBA2D /* DecorationView.m */,
+				ED050DD1228C6E9000A26D73 /* Main.storyboard */,
 				ED050E09228C918B00A26D73 /* HeaderView.h */,
 				ED050E0A228C918B00A26D73 /* HeaderView.m */,
-				ED050DD1228C6E9000A26D73 /* Main.storyboard */,
 				ED050DE1228C728A00A26D73 /* ImageCollectionViewCell.h */,
 				ED050DE2228C728A00A26D73 /* ImageCollectionViewCell.m */,
 				ED050DD4228C6E9100A26D73 /* Assets.xcassets */,
@@ -159,6 +164,7 @@
 				ED050DD0228C6E9000A26D73 /* ViewController.m in Sources */,
 				ED050E0B228C918B00A26D73 /* HeaderView.m in Sources */,
 				ED050DDB228C6E9100A26D73 /* main.m in Sources */,
+				EDB00365228CBFA800DDBA2D /* DecorationView.m in Sources */,
 				ED050DE3228C728A00A26D73 /* ImageCollectionViewCell.m in Sources */,
 				ED050E0E228CA36A00A26D73 /* CustomCollectionViewFlowLayout.m in Sources */,
 				ED050DCD228C6E9000A26D73 /* AppDelegate.m in Sources */,

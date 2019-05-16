@@ -30,8 +30,6 @@
 //    [self.imageCollectionView registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([ImageCollectionViewCell class])]; this is only for doing programmatically
     
     [self setupDataArray:0];
-//    self.imageCollectionView.backgroundColor = [UIColor blackColor];
-    self.imageCollectionView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
     self.flowLayoutMax = [[CustomCollectionViewFlowLayout alloc]init];
     self.flowLayoutMed = [[CustomCollectionViewFlowLayout alloc]init];
     self.flowLayoutMin = [[CustomCollectionViewFlowLayout alloc]init];
@@ -40,10 +38,9 @@
     [self.flowLayoutMin registerClass:[DecorationView class] forDecorationViewOfKind:@"background"];
     self.flowLayoutMax = (CustomCollectionViewFlowLayout*)self.imageCollectionView.collectionViewLayout;
     [self setupMaxLayout];
+    [self setupTapGesture];
     
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(deleteImage:)];
-    [tap setNumberOfTapsRequired:2];
-    [self.imageCollectionView addGestureRecognizer:tap];
+    self.imageCollectionView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
 
 
     
@@ -52,6 +49,12 @@
 
 
 #pragma mark helpers
+
+-(void) setupTapGesture {
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(deleteImage:)];
+    [tap setNumberOfTapsRequired:2];
+    [self.imageCollectionView addGestureRecognizer:tap];
+}
 
 -(void)setupDataArray: (NSInteger) index {
     
@@ -63,7 +66,14 @@
         self.imageNames = [[NSMutableArray alloc] initWithObjects:mage,assassin,support,nil] ;
     } else {
         self.sections = @[@"BANDLE CITY",@"BILGEWATER",@"DEMACIA", @"IONIA",@"VOID",@"ZAUN",@"UNKNOWN"];
-        self.imageNames = [[NSMutableArray alloc]initWithObjects:@[@"Teemo"],@[@"Fizz"],@[@"Lux",@"Morgana",@"Kayle"],@[@"Zed"],@[@"Kaisa"],@[@"Blitzcrank"],@[@"Annie",@"Brand"],nil];
+        NSMutableArray *bandleCity = [[NSMutableArray alloc]initWithObjects:@"Teemo", nil];
+        NSMutableArray *bilgewater = [[NSMutableArray alloc]initWithObjects:@"Fizz", nil];
+        NSMutableArray *demacia = [[NSMutableArray alloc]initWithObjects:@"Lux",@"Morgana",@"Kayle", nil];
+        NSMutableArray *ionia = [[NSMutableArray alloc]initWithObjects:@"Zed", nil];
+        NSMutableArray *thevoid = [[NSMutableArray alloc]initWithObjects:@"Kaisa", nil];
+        NSMutableArray *zaun = [[NSMutableArray alloc]initWithObjects:@"Blitzcrank", nil];
+        NSMutableArray *unknown = [[NSMutableArray alloc]initWithObjects:@"Annie",@"Brand", nil];
+        self.imageNames = [[NSMutableArray alloc]initWithObjects:bandleCity,bilgewater,demacia,ionia,thevoid,zaun,unknown,nil];
     }
 }
 
@@ -124,7 +134,7 @@
         supplementaryView.backgroundColor = [UIColor blackColor];
 
     }
-    
+    supplementaryView.alpha = 0.3;
     supplementaryView.roleLabel.text = self.sections[indexPath.section];
     return supplementaryView;
    
@@ -150,25 +160,21 @@
             if (self.currentLayout == 2) {
                 self.flowLayoutMed = (CustomCollectionViewFlowLayout*)self.imageCollectionView.collectionViewLayout;
                 [self setupMedLayout];
-                NSLog(@"back to med from min");
                 return;
             } else if (self.currentLayout == 1) {
                self.flowLayoutMax = (CustomCollectionViewFlowLayout*)self.imageCollectionView.collectionViewLayout;
                [self setupMaxLayout];
-                NSLog(@"back to Max from med");
                 return;
             }
         } else {
             if (self.currentLayout == 1) {
                 self.flowLayoutMin = (CustomCollectionViewFlowLayout*)self.imageCollectionView.collectionViewLayout;
                 [self setupMinLayout];
-                NSLog(@"back to min from med");
                 return;
             }
             if (self.currentLayout == 0) {
                 self.flowLayoutMed = (CustomCollectionViewFlowLayout*)self.imageCollectionView.collectionViewLayout;
                 [self setupMedLayout];
-                NSLog(@"back to med from max");
                 return;
             }
         }
@@ -179,28 +185,16 @@
     
     [self setupDataArray:sender.selectedSegmentIndex];
     [self.imageCollectionView reloadData];
-    NSLog(@"%ld", sender.selectedSegmentIndex);
     
 }
 -(void)deleteImage:(UITapGestureRecognizer *)sender {
     
     CGPoint location = [sender locationInView:self.view];
     NSIndexPath *indexPath = [self.imageCollectionView indexPathForItemAtPoint:location];
-    NSLog(@"taptap %ld %ld",indexPath.section, indexPath.item);
     NSString *photoName = self.imageNames[indexPath.section][indexPath.item];
     [self.imageNames[indexPath.section] removeObject:photoName];
     [self.imageCollectionView deleteItemsAtIndexPaths:@[indexPath]];
     [self.imageCollectionView reloadData];
-    
-//    [self.imageCollectionView performBatchUpdates:^{
-//                                                    [self.imageNames[indexPath.section] removeObject:photoName];
-//                                                    [self.imageCollectionView deleteItemsAtIndexPaths:@[indexPath]];
-//
-//    } completion:nil];
-  
-    
-    
-    
 }
 
 
